@@ -66,7 +66,7 @@ class URL_Locater:
                 writer.writerow([url])
 
 
-# Example usage:
+# Usage:
 crawler = URL_Locater()
 starting_url = 'https://testurl.com '
 crawler.visit_links_recursively(starting_url)

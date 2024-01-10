@@ -48,7 +48,7 @@ class URL_Locater:
             links = driver.find_elements(By.TAG_NAME, 'a')
             for link in links:
                 href = link.get_attribute('href')
-                if href and self.is_same_domain(url, href) and not href.endswith(".pdf") and not href.endswith('#') and 'utm_source' not in href:
+                if href and self.is_same_domain(url, href) and not href.endswith(".pdf") and '#' not in href and 'utm_source' not in href:
                     if href not in self.visited_links:
                         stack.append((href, depth + 1))
 

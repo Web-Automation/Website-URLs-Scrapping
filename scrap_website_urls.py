@@ -6,10 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from urllib.parse import urlparse
 import csv
-import os
 
-# Prevent macOS from sleeping: Change "7200" as per your time (it takes input as seconds where 3600s = 1 hr)
-os.system('caffeinate -i -t 7200 &')
 
 # This parent class which holds multiple functions for navigating all the URLs:
 class URL_Locater:
@@ -39,6 +36,7 @@ class URL_Locater:
             links_visited += 1
             print(f"Visiting: {url}")
 
+            # Set up the webdriver: 
             options = Options()
             options.headless = True
             service = Service('# Replace with your path to chromedriver')  

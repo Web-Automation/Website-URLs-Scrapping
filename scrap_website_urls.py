@@ -68,5 +68,5 @@ class URL_Locater:
 crawler = URL_Locater()
 starting_url = 'https://testurl.com '
 crawler.visit_links_recursively(starting_url)
-# You can change the name of the CSV file from "visted_urls.csv" to any one that you want.
-crawler.save_to_csv('visited_urls.csv')
+# You can change the name of the CSV file from "tracked_urls.csv" to any one that you want, this file contains all the URLs that this automation code fetch from the website which belongs to same domain of the 'starting_url'
+crawler.save_to_csv('tracked_urls.csv')

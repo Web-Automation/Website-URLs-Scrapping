@@ -86,21 +86,24 @@ class URL_Locater:
             self.driver.get(url)
 
             links = self.driver.find_elements(By.TAG_NAME, 'a')
-            for link in links:
-                href = link.get_attribute('href')
-                # It will only append those URLs which belong to same domain
-                # This will avoid appending those links having 'UTM Source', or ends with (.pdf) or pointing to a div element inside href i.e.(#)[Example: www.testurl.com/gene/example#]
-                if (
-                    href
-                    and self.is_same_domain(url, href)
-                    and not href.endswith(".pdf")
-                    and '#' not in href
-                    and 'utm_source' not in href
-                    and (avoid_urls is None or href not in avoid_urls)
-                ):
-                    # Appending in the stack only those href links which are not in the visiting link set 
-                    if href not in self.visited_links:
-                        stack.append((href, depth + 1))
+            
+                #  If links is None, the loop will be skipped, and the code will continue without attempting to iterate over it, preventing the TypeError.
+                if links is not None:
+                for link in links:
+                    href = link.get_attribute('href')
+                    # It will only append those URLs which belong to same domain
+                    # This will avoid appending those links having 'UTM Source', or ends with (.pdf) or pointing to a div element inside href i.e.(#)[Example: www.testurl.com/gene/example#]
+                    if href:
+                        # Your existing conditions here
+                        if (
+                            self.is_same_domain(url, href)
+                            and not href.endswith(".pdf")
+                            and '#' not in href
+                            and 'utm_source' not in href
+                            and (avoid_urls is None or href not in avoid_urls)
+                        ):
+                            if href not in self.visited_links:
+                                stack.append((href, depth + 1))
 
         # Don't quit the driver here to maintain the login session
 

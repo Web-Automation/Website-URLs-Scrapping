@@ -16,6 +16,7 @@ This repository contains two automation scripts for web scraping one for scrappi
 
 ## Usage
 Install dependencies:
+
 -pip install selenium
 -pip install webdriver_manager
 
